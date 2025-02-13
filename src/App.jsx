@@ -33,15 +33,17 @@ function App() {
       </header>
       <main>
         <h2>Aquí irán los resultados</h2>
-        <article className="movie__container">
-          <img src={movieData.Poster} alt="" />
-          <div>
-            <p>Título: {movieData.Title}</p>
-            <p>Año: {movieData.Year}</p>
-            <p>Genero: {movieData.Genre}</p>
-            <p>Director: {movieData.Director}</p>
-          </div>
-        </article>
+        {inputValue && (
+          <article className="movie__container">
+            <img src={movieData.Poster} alt="" />
+            <div>
+              <p>Título: {movieData.Title}</p>
+              <p>Año: {movieData.Year}</p>
+              <p>Genero: {movieData.Genre}</p>
+              <p>Director: {movieData.Director}</p>
+            </div>
+          </article>
+        )}
       </main>
     </div>
   );
