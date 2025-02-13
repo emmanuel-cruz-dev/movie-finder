@@ -9,21 +9,21 @@ function App() {
   };
 
   return (
-    <>
-      <h1>Prueba técnica</h1>
-      <div>
+    <div className="page">
+      <header>
+        <h1>Buscador de películas</h1>
         <form className="form" action="">
-          <label htmlFor="">
-            <input
-              onChange={(event) => handleInput(event)}
-              type="text"
-              placeholder="Avengers, Star Wars, The Matrix..."
-            />
-          </label>
-          <p>{inputValue}</p>
+          <input
+            onChange={(event) => handleInput(event)}
+            type="text"
+            placeholder="Avengers, Star Wars, The Matrix..."
+          />
+          <button type="submit">Buscar</button>
+          {/* <p>{inputValue}</p> */}
         </form>
-      </div>
-    </>
+      </header>
+      <main>Aquí irán los resultados</main>
+    </div>
   );
 }
 
