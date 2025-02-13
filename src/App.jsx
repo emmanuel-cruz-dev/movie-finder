@@ -4,13 +4,14 @@ import "./App.css";
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState();
+  const [movieName, setMovieName] = useState();
   // const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
 
   useEffect(() => {
     fetch(`https://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setMovieName(data.Title));
   }, [inputValue]);
 
   const handleInput = (event) => {
@@ -28,7 +29,7 @@ function App() {
             placeholder="Avengers, Star Wars, The Matrix..."
           />
           <button type="submit">Buscar</button>
-          {/* <p>{inputValue}</p> */}
+          <p>{movieName}</p>
         </form>
       </header>
       <main>Aquí irán los resultados</main>
