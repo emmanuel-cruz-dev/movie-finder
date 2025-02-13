@@ -37,10 +37,18 @@ function App() {
           <article className="movie__container">
             <img src={movieData.Poster} alt="" />
             <div>
-              <p>Título: {movieData.Title}</p>
-              <p>Año: {movieData.Year}</p>
-              <p>Genero: {movieData.Genre}</p>
-              <p>Director: {movieData.Director}</p>
+              <p>
+                <strong>Título:</strong> {movieData.Title}
+              </p>
+              <p>
+                <strong>Año:</strong> {movieData.Year}
+              </p>
+              <p>
+                <strong>Genero:</strong> {movieData.Genre}
+              </p>
+              <p>
+                <strong>Director:</strong> {movieData.Director}
+              </p>
             </div>
           </article>
         )}
