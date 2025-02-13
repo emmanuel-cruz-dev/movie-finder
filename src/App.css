@@ -8,6 +8,7 @@
 
 main{
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -19,4 +20,13 @@ form{
 
 input{
   width: 320px;
+}
+
+.movie__container{
+  display: flex;
+  gap: 2rem;
+}
+
+.movie__container img{
+  width: 240px;
 }
