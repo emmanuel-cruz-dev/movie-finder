@@ -1,8 +1,14 @@
+// import { config } from "dotenv";
+// config();
+
+const apiKey = import.meta.env.VITE_API_KEY;
+
 import { useState } from "react";
 import "./App.css";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
 
   const handleInput = (event) => {
     setInputValue(event.target.value);
