@@ -1,14 +1,17 @@
-// import { config } from "dotenv";
-// config();
+import { useEffect, useState } from "react";
+import "./App.css";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
-import { useState } from "react";
-import "./App.css";
-
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
+  // const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
+
+  useEffect(() => {
+    fetch(`https://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [inputValue]);
 
   const handleInput = (event) => {
     setInputValue(event.target.value);
