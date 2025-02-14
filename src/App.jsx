@@ -17,7 +17,10 @@ function App() {
           const movieFilter = data.Search.filter(
             (movie) => movie.Type == "movie"
           );
-          const movieYear = movieFilter.sort((a, b) => b.Year - a.Year);
+          const moviePosterFilter = movieFilter.filter(
+            (movie) => movie.Poster !== "N/A"
+          );
+          const movieYear = moviePosterFilter.sort((a, b) => b.Year - a.Year);
           setMovieData(movieYear);
         }
       });
@@ -62,6 +65,9 @@ function App() {
                         </p>
                         <p>
                           <strong>Año:</strong> {movie.Year}
+                        </p>
+                        <p className="movie__type">
+                          <strong>Tipo:</strong> {movie.Type}
                         </p>
                         <p>
                           <strong>ID:</strong> {movie.imdbID.slice(2)}
