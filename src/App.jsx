@@ -13,7 +13,9 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.Search);
-        setMovieData(data.Search.filter((movie) => movie.Type == "movie"));
+        if (data.Search) {
+          setMovieData(data.Search.filter((movie) => movie.Type == "movie"));
+        }
       });
   }, [inputValue]);
 
@@ -56,9 +58,6 @@ function App() {
                         </p>
                         <p>
                           <strong>Año:</strong> {movie.Year}
-                        </p>
-                        <p>
-                          <strong>Tipo:</strong> {movie.Type}
                         </p>
                         <p>
                           <strong>ID:</strong> {movie.imdbID.slice(2)}
