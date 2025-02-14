@@ -1,39 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
+import { useMovies } from "./hooks/useMovies";
 
-const apiKey = import.meta.env.VITE_API_KEY;
+// const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
   const [inputValue, setInputValue] = useState();
-  const [movieData, setMovieData] = useState();
-  const mappedMovies = movieData?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    poster: movie.Poster,
-  }));
+  // const [movieData, setMovieData] = useState();
+  const { movies } = useMovies(inputValue);
   // const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
-
-  useEffect(() => {
-    fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${inputValue}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.Search);
-
-        if (data.Search === undefined) {
-          return setMovieData(undefined);
-        }
-        const movieFilter = data.Search.filter(
-          (movie) => movie.Type == "movie"
-        );
-        const moviePosterFilter = movieFilter.filter(
-          (movie) => movie.Poster !== "N/A"
-        );
-        const movieYear = moviePosterFilter.sort((a, b) => b.Year - a.Year);
-        setMovieData(movieYear);
-      });
-  }, [inputValue]);
 
   const handleInput = (event) => {
     setInputValue(event.target.value);
@@ -55,9 +31,9 @@ function App() {
       <main>
         {inputValue && (
           <>
-            <h2>Resultados {movieData && <span>({movieData.length})</span>}</h2>
+            <h2>Resultados {movies && <span>({movies.length})</span>}</h2>
             <section className="movie__container">
-              <Movies movies={mappedMovies} />
+              <Movies movies={movies} />
             </section>
           </>
         )}
