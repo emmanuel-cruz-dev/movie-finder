@@ -29,7 +29,11 @@ export function ListOfMovies({ movies }) {
 }
 
 function NoMoviesResults() {
-  return <p>No se encontraron películas para esta búsqueda</p>;
+  return (
+    <p className="movie__no-results">
+      No se encontraron películas para esta búsqueda.
+    </p>
+  );
 }
 
 export function Movies({ movies }) {
