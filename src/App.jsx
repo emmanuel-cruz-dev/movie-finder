@@ -14,7 +14,11 @@ function App() {
       .then((data) => {
         console.log(data.Search);
         if (data.Search) {
-          setMovieData(data.Search.filter((movie) => movie.Type == "movie"));
+          const movieFilter = data.Search.filter(
+            (movie) => movie.Type == "movie"
+          );
+          const movieYear = movieFilter.sort((a, b) => b.Year - a.Year);
+          setMovieData(movieYear);
         }
       });
   }, [inputValue]);
