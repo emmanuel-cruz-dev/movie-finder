@@ -8,7 +8,7 @@ import { useMovies } from "./hooks/useMovies";
 function App() {
   const [inputValue, setInputValue] = useState();
   // const [movieData, setMovieData] = useState();
-  const { movies } = useMovies(inputValue);
+  const { movies: mappedMovies } = useMovies(inputValue);
   // const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
 
   const handleInput = (event) => {
@@ -31,9 +31,11 @@ function App() {
       <main>
         {inputValue && (
           <>
-            <h2>Resultados {movies && <span>({movies.length})</span>}</h2>
+            <h2>
+              Resultados {mappedMovies && <span>({mappedMovies.length})</span>}
+            </h2>
             <section className="movie__container">
-              <Movies movies={movies} />
+              <Movies movies={mappedMovies} />
             </section>
           </>
         )}

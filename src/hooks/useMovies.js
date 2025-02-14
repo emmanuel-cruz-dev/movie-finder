@@ -9,7 +9,7 @@ export function useMovies(input) {
     id: movie.imdbID,
     title: movie.Title,
     year: movie.Year,
-    type: movie,
+    type: movie.Type,
     poster: movie.Poster,
   }));
 
