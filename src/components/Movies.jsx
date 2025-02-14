@@ -2,24 +2,24 @@ export function ListOfMovies({ movies }) {
   return (
     <>
       {movies.map((movie) => (
-        <article key={movie.imdbID} className="movie__card">
+        <article key={movie.id} className="movie__card">
           <img
-            src={movie.Poster}
-            alt={`${movie.Title} Poster (${movie.Year})`}
-            title={`${movie.Title} (${movie.Year})`}
+            src={movie.poster}
+            alt={`${movie.title} Poster (${movie.year})`}
+            title={`${movie.title} (${movie.year})`}
           />
           <aside className="movie__text">
             <p>
-              <strong>Título:</strong> {movie.Title}
+              <strong>Título:</strong> {movie.title}
             </p>
             <p>
-              <strong>Año:</strong> {movie.Year}
+              <strong>Año:</strong> {movie.year}
             </p>
             <p className="movie__type">
-              <strong>Tipo:</strong> {movie.Type}
+              <strong>Tipo:</strong> {movie.type}
             </p>
             <p>
-              <strong>ID:</strong> {movie.imdbID.slice(2)}
+              <strong>ID:</strong> {movie.id.slice(2)}
             </p>
           </aside>
         </article>

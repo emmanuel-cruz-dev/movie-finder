@@ -7,6 +7,12 @@ const apiKey = import.meta.env.VITE_API_KEY;
 function App() {
   const [inputValue, setInputValue] = useState();
   const [movieData, setMovieData] = useState();
+  const mappedMovies = movieData?.map((movie) => ({
+    id: movie.imdbID,
+    title: movie.Title,
+    year: movie.Year,
+    poster: movie.Poster,
+  }));
   // const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
 
   useEffect(() => {
@@ -51,7 +57,7 @@ function App() {
           <>
             <h2>Resultados {movieData && <span>({movieData.length})</span>}</h2>
             <section className="movie__container">
-              <Movies movies={movieData} />
+              <Movies movies={mappedMovies} />
             </section>
           </>
         )}
