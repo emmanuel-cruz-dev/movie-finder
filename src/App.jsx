@@ -13,16 +13,18 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.Search);
-        if (data.Search) {
-          const movieFilter = data.Search.filter(
-            (movie) => movie.Type == "movie"
-          );
-          const moviePosterFilter = movieFilter.filter(
-            (movie) => movie.Poster !== "N/A"
-          );
-          const movieYear = moviePosterFilter.sort((a, b) => b.Year - a.Year);
-          setMovieData(movieYear);
+
+        if (data.Search === undefined) {
+          return setMovieData(undefined);
         }
+        const movieFilter = data.Search.filter(
+          (movie) => movie.Type == "movie"
+        );
+        const moviePosterFilter = movieFilter.filter(
+          (movie) => movie.Poster !== "N/A"
+        );
+        const movieYear = moviePosterFilter.sort((a, b) => b.Year - a.Year);
+        setMovieData(movieYear);
       });
   }, [inputValue]);
 
@@ -46,10 +48,8 @@ function App() {
       <main>
         {inputValue && (
           <>
-            <h2>
-              Resultados {inputValue && <span>({movieData.length})</span>}
-            </h2>
-            {movieData !== undefined ? (
+            <h2>Resultados {movieData && <span>({movieData.length})</span>}</h2>
+            {movieData != undefined ? (
               <section className="movie__container">
                 {movieData.map((movie) => {
                   return (
