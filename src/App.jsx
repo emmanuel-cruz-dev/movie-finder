@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Movies } from "./components/Movies";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -51,31 +52,7 @@ function App() {
             <h2>Resultados {movieData && <span>({movieData.length})</span>}</h2>
             {movieData != undefined ? (
               <section className="movie__container">
-                {movieData.map((movie) => {
-                  return (
-                    <article key={movie.imdbID} className="movie__card">
-                      <img
-                        src={movie.Poster}
-                        alt={`${movie.Title} Poster (${movie.Year})`}
-                        title={`${movie.Title} (${movie.Year})`}
-                      />
-                      <aside className="movie__text">
-                        <p>
-                          <strong>Título:</strong> {movie.Title}
-                        </p>
-                        <p>
-                          <strong>Año:</strong> {movie.Year}
-                        </p>
-                        <p className="movie__type">
-                          <strong>Tipo:</strong> {movie.Type}
-                        </p>
-                        <p>
-                          <strong>ID:</strong> {movie.imdbID.slice(2)}
-                        </p>
-                      </aside>
-                    </article>
-                  );
-                })}
+                <Movies movies={movieData} />
               </section>
             ) : (
               <span>No se encontró la película.</span>
