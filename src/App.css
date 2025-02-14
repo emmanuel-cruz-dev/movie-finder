@@ -1,7 +1,6 @@
 .page{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
 }
@@ -26,15 +25,14 @@ input{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  width: 80vw;
+  width: 72vw;
 }
 
 .movie__card{
   display: flex;
   text-align: left;
   gap: 1rem;
-  background-color: #e0e0e0;
-  color: #000;
+  background-color: #0f0f0f;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -44,12 +42,8 @@ input{
   padding-right: 1rem;
 }
 
-.movie__card strong{
-  color: #000;
-}
-
 .movie__card img{
-  max-width: 220px;
+  max-width: 140px;
   height: 100%;
   object-fit: cover;
 }
