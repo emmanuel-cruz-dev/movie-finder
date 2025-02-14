@@ -17,15 +17,12 @@ form{
   align-items: center;
 }
 
-input{
-  width: 320px;
-}
-
 .movie__container{
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
-  width: 72vw;
+  width: 90vw;
 }
 
 .movie__card{
@@ -41,7 +38,7 @@ input{
 }
 
 .movie__card:hover{
-  transform: scale(1.03);
+  transform: scale(1.015);
   background-color: #000;
 }
 
@@ -57,4 +54,15 @@ input{
 
 .movie__type{
   text-transform: capitalize;
+}
+
+@media screen and (min-width: 768px) {
+  input {
+    width: 320px;
+  }
+
+  .movie__container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 72vw;
+  }
 }
