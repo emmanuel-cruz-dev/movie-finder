@@ -59,7 +59,7 @@ function App() {
                         alt={`${movie.Title} Poster (${movie.Year})`}
                         title={`${movie.Title} (${movie.Year})`}
                       />
-                      <div className="movie__text">
+                      <aside className="movie__text">
                         <p>
                           <strong>Título:</strong> {movie.Title}
                         </p>
@@ -72,7 +72,7 @@ function App() {
                         <p>
                           <strong>ID:</strong> {movie.imdbID.slice(2)}
                         </p>
-                      </div>
+                      </aside>
                     </article>
                   );
                 })}
