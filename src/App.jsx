@@ -11,7 +11,10 @@ function App() {
   useEffect(() => {
     fetch(`https://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`)
       .then((res) => res.json())
-      .then((data) => setMovieData(data));
+      .then((data) => {
+        console.log(data);
+        setMovieData(data);
+      });
   }, [inputValue]);
 
   const handleInput = (event) => {
@@ -32,23 +35,30 @@ function App() {
         </form>
       </header>
       <main>
-        <h2>Aquí irán los resultados</h2>
+        <h2>Resultados</h2>
         {inputValue && (
           <article className="movie__container">
             <img src={movieData.Poster} alt="" />
-            <div>
+            <div className="movie__text">
               <p>
-                <strong>Título:</strong> {movieData.Title}
+                <strong>Título:</strong> {movieData.Title}.
               </p>
               <p>
-                <strong>Año:</strong> {movieData.Year}
+                <strong>Año:</strong> {movieData.Year}.
               </p>
               <p>
-                <strong>Genero:</strong> {movieData.Genre}
+                <strong>Genero:</strong> {movieData.Genre}.
               </p>
               <p>
-                <strong>Director:</strong> {movieData.Director}
+                <strong>Director:</strong> {movieData.Director}.
               </p>
+              <p>
+                <strong>Actors:</strong> {movieData.Actors}.
+              </p>
+              <p>
+                <strong>Trama:</strong> {movieData.Plot}
+              </p>
+              <p className="movie__rating">{movieData.imdbRating}</p>
             </div>
           </article>
         )}

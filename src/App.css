@@ -24,9 +24,41 @@ input{
 
 .movie__container{
   display: flex;
-  gap: 2rem;
+  text-align: left;
+  gap: 1rem;
+  background-color: #eee;
+  color: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.movie__text{
+  padding-right: 1rem;
+}
+
+.movie__container strong{
+  color: #000;
 }
 
 .movie__container img{
   width: 220px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie__rating{
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-weight: 700;
+  font-size: 1.1em;
 }
