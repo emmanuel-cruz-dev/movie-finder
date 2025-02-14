@@ -4,21 +4,28 @@ import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 
 function App() {
-  const [inputValue, setInputValue] = useState();
-  const { movies } = useMovies(inputValue);
+  const [query, setQuery] = useState();
+  const { movies } = useMovies(query);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    setInputValue(value);
+    setQuery(value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ query });
   };
 
   return (
     <div className="page">
       <header>
         <h1>Buscador de películas</h1>
-        <form className="form" action="">
+        <form className="form" onSubmit={handleSubmit}>
           <input
-            onChange={(event) => handleInputChange(event)}
+            onChange={handleInputChange}
+            value={query}
+            name="query"
             type="text"
             placeholder="Avengers, Star Wars, The Matrix..."
           />
@@ -26,7 +33,7 @@ function App() {
         </form>
       </header>
       <main>
-        {inputValue && (
+        {query && (
           <>
             <h2>Resultados {movies && <span>({movies.length})</span>}</h2>
             <section className="movie__container">
