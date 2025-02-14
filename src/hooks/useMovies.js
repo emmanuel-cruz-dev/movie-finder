@@ -17,7 +17,7 @@ export function useMovies(input) {
     fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${input}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.Search);
+        //console.log(data.Search);
 
         if (data.Search === undefined) {
           return setMovies(undefined);
