@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
@@ -6,11 +6,10 @@ import { useMovies } from "./hooks/useMovies";
 function App() {
   const [inputValue, setInputValue] = useState();
   const { movies } = useMovies(inputValue);
-  const inputRef = useRef();
 
-  const handleInput = () => {
-    console.log(inputRef.current.value);
-    setInputValue(inputRef.current.value);
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    setInputValue(value);
   };
 
   return (
@@ -19,8 +18,7 @@ function App() {
         <h1>Buscador de películas</h1>
         <form className="form" action="">
           <input
-            ref={inputRef}
-            onChange={handleInput}
+            onChange={(event) => handleInputChange(event)}
             type="text"
             placeholder="Avengers, Star Wars, The Matrix..."
           />
