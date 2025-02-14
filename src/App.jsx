@@ -5,15 +5,15 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
   const [inputValue, setInputValue] = useState();
-  const [movieData, setMovieData] = useState({});
+  const [movieData, setMovieData] = useState();
   // const API = `https://www.omdbapi.com/?t=pulp+fiction&apikey=${apiKey}`;
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`)
+    fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${inputValue}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setMovieData(data);
+        console.log(data.Search);
+        setMovieData(data.Search);
       });
   }, [inputValue]);
 
@@ -38,30 +38,34 @@ function App() {
         {inputValue && (
           <>
             <h2>Resultados</h2>
-            <article className="movie__container">
-              <img src={movieData.Poster} alt="" />
-              <div className="movie__text">
-                <p>
-                  <strong>Título:</strong> {movieData.Title}.
-                </p>
-                <p>
-                  <strong>Año:</strong> {movieData.Year}.
-                </p>
-                <p>
-                  <strong>Genero:</strong> {movieData.Genre}.
-                </p>
-                <p>
-                  <strong>Director:</strong> {movieData.Director}.
-                </p>
-                <p>
-                  <strong>Actors:</strong> {movieData.Actors}.
-                </p>
-                <p>
-                  <strong>Trama:</strong> {movieData.Plot}
-                </p>
-                <p className="movie__rating">{movieData.imdbRating}</p>
-              </div>
-            </article>
+            {movieData !== undefined ? (
+              <section className="movie__container">
+                {movieData.map((movie) => {
+                  return (
+                    <article key={movie.imdbID} className="movie__card">
+                      <img
+                        src={movie.Poster}
+                        alt={`${movie.Title} Poster`}
+                        title={movie.Title}
+                      />
+                      <div className="movie__text">
+                        <p>
+                          <strong>Título:</strong> {movie.Title}.
+                        </p>
+                        <p>
+                          <strong>Año:</strong> {movie.Year}.
+                        </p>
+                        <p>
+                          <strong>ID:</strong> {movie.imdbID}
+                        </p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </section>
+            ) : (
+              <span>No se encontró la película</span>
+            )}
           </>
         )}
       </main>

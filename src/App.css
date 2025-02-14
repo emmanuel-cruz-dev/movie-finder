@@ -23,10 +23,17 @@ input{
 }
 
 .movie__container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 80vw;
+}
+
+.movie__card{
   display: flex;
   text-align: left;
   gap: 1rem;
-  background-color: #eee;
+  background-color: #e0e0e0;
   color: #000;
   border-radius: 4px;
   overflow: hidden;
@@ -37,28 +44,12 @@ input{
   padding-right: 1rem;
 }
 
-.movie__container strong{
+.movie__card strong{
   color: #000;
 }
 
-.movie__container img{
-  width: 220px;
+.movie__card img{
+  max-width: 220px;
   height: 100%;
   object-fit: cover;
-}
-
-.movie__rating{
-  position: absolute;
-  top: 0;
-  right: 1rem;
-  background-color: #000;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  font-weight: 700;
-  font-size: 1.2em;
 }
