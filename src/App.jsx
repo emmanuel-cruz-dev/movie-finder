@@ -35,32 +35,34 @@ function App() {
         </form>
       </header>
       <main>
-        <h2>Resultados</h2>
         {inputValue && (
-          <article className="movie__container">
-            <img src={movieData.Poster} alt="" />
-            <div className="movie__text">
-              <p>
-                <strong>Título:</strong> {movieData.Title}.
-              </p>
-              <p>
-                <strong>Año:</strong> {movieData.Year}.
-              </p>
-              <p>
-                <strong>Genero:</strong> {movieData.Genre}.
-              </p>
-              <p>
-                <strong>Director:</strong> {movieData.Director}.
-              </p>
-              <p>
-                <strong>Actors:</strong> {movieData.Actors}.
-              </p>
-              <p>
-                <strong>Trama:</strong> {movieData.Plot}
-              </p>
-              <p className="movie__rating">{movieData.imdbRating}</p>
-            </div>
-          </article>
+          <>
+            <h2>Resultados</h2>
+            <article className="movie__container">
+              <img src={movieData.Poster} alt="" />
+              <div className="movie__text">
+                <p>
+                  <strong>Título:</strong> {movieData.Title}.
+                </p>
+                <p>
+                  <strong>Año:</strong> {movieData.Year}.
+                </p>
+                <p>
+                  <strong>Genero:</strong> {movieData.Genre}.
+                </p>
+                <p>
+                  <strong>Director:</strong> {movieData.Director}.
+                </p>
+                <p>
+                  <strong>Actors:</strong> {movieData.Actors}.
+                </p>
+                <p>
+                  <strong>Trama:</strong> {movieData.Plot}
+                </p>
+                <p className="movie__rating">{movieData.imdbRating}</p>
+              </div>
+            </article>
+          </>
         )}
       </main>
     </div>

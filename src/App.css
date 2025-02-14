@@ -57,8 +57,8 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
