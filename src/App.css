@@ -65,6 +65,18 @@ form{
   grid-column: span 2;
 }
 
+.movie__button{
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-weight: bold;
+  background-color: rgba(0, 0, 255, .5);
+}
+
+.movie__button:hover{
+  background-color: blue;
+}
+
 @media screen and (min-width: 540px) {
   .movie__card {
     flex-direction: row;

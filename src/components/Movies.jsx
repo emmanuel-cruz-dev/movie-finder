@@ -8,19 +8,22 @@ export function ListOfMovies({ movies }) {
             alt={`${movie.title} Poster (${movie.year})`}
             title={`${movie.title} (${movie.year})`}
           />
-          <aside className="movie__text">
-            <p>
-              <strong>Título:</strong> {movie.title}
-            </p>
-            <p>
-              <strong>Año:</strong> {movie.year}
-            </p>
-            <p className="movie__type">
-              <strong>Tipo:</strong> {movie.type}
-            </p>
-            <p>
-              <strong>ID:</strong> {movie.id.slice(2)}
-            </p>
+          <aside>
+            <div className="movie__text">
+              <p>
+                <strong>Título:</strong> {movie.title}
+              </p>
+              <p>
+                <strong>Año:</strong> {movie.year}
+              </p>
+              <p className="movie__type">
+                <strong>Tipo:</strong> {movie.type}
+              </p>
+              <p>
+                <strong>ID:</strong> {movie.id.slice(2)}
+              </p>
+            </div>
+            <button className="movie__button">Detalles</button>
           </aside>
         </article>
       ))}
