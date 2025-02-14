@@ -45,15 +45,15 @@ function App() {
                     <article key={movie.imdbID} className="movie__card">
                       <img
                         src={movie.Poster}
-                        alt={`${movie.Title} Poster`}
-                        title={movie.Title}
+                        alt={`${movie.Title} Poster (${movie.Year})`}
+                        title={`${movie.Title} (${movie.Year})`}
                       />
                       <div className="movie__text">
                         <p>
-                          <strong>Título:</strong> {movie.Title}.
+                          <strong>Título:</strong> {movie.Title}
                         </p>
                         <p>
-                          <strong>Año:</strong> {movie.Year}.
+                          <strong>Año:</strong> {movie.Year}
                         </p>
                         <p>
                           <strong>ID:</strong> {movie.imdbID.slice(2)}
@@ -64,7 +64,7 @@ function App() {
                 })}
               </section>
             ) : (
-              <span>No se encontró la película</span>
+              <span>No se encontró la película...</span>
             )}
           </>
         )}
