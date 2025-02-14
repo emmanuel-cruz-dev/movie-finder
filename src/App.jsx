@@ -56,7 +56,7 @@ function App() {
                           <strong>Año:</strong> {movie.Year}.
                         </p>
                         <p>
-                          <strong>ID:</strong> {movie.imdbID}
+                          <strong>ID:</strong> {movie.imdbID.slice(2)}
                         </p>
                       </div>
                     </article>
