@@ -40,7 +40,7 @@ input{
 }
 
 .movie__text{
-  padding-left: 1rem;
+  padding-inline: 1rem;
 }
 
 .movie__card img{

@@ -13,7 +13,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.Search);
-        setMovieData(data.Search);
+        setMovieData(data.Search.filter((movie) => movie.Type == "movie"));
       });
   }, [inputValue]);
 
@@ -37,7 +37,9 @@ function App() {
       <main>
         {inputValue && (
           <>
-            <h2>Resultados</h2>
+            <h2>
+              Resultados {inputValue && <span>({movieData.length})</span>}
+            </h2>
             {movieData !== undefined ? (
               <section className="movie__container">
                 {movieData.map((movie) => {
@@ -56,6 +58,9 @@ function App() {
                           <strong>Año:</strong> {movie.Year}
                         </p>
                         <p>
+                          <strong>Tipo:</strong> {movie.Type}
+                        </p>
+                        <p>
                           <strong>ID:</strong> {movie.imdbID.slice(2)}
                         </p>
                       </div>
@@ -64,7 +69,7 @@ function App() {
                 })}
               </section>
             ) : (
-              <span>No se encontró la película...</span>
+              <span>No se encontró la película.</span>
             )}
           </>
         )}
