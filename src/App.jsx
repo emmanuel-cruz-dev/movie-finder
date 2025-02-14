@@ -50,13 +50,9 @@ function App() {
         {inputValue && (
           <>
             <h2>Resultados {movieData && <span>({movieData.length})</span>}</h2>
-            {movieData != undefined ? (
-              <section className="movie__container">
-                <Movies movies={movieData} />
-              </section>
-            ) : (
-              <span>No se encontró la película.</span>
-            )}
+            <section className="movie__container">
+              <Movies movies={movieData} />
+            </section>
           </>
         )}
       </main>
