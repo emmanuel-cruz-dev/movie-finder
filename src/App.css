@@ -70,11 +70,11 @@ form{
   right: 1rem;
   bottom: 1rem;
   font-weight: bold;
-  background-color: rgba(0, 0, 255, .5);
+  background-color: blue;
 }
 
 .movie__button:hover{
-  background-color: blue;
+  background-color: rgba(0, 0, 255, .5);
 }
 
 @media screen and (min-width: 540px) {

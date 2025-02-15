@@ -23,7 +23,7 @@ export function ListOfMovies({ movies }) {
                 <strong>ID:</strong> {movie.id.slice(2)}
               </p>
             </div>
-            <button className="movie__button">Detalles</button>
+            <button className="movie__button">Ver más</button>
           </aside>
         </article>
       ))}
