@@ -30,13 +30,11 @@ function useSearch() {
 }
 
 function App() {
-  const [query, setQuery] = useState();
   const { search, updateSearch, error } = useSearch();
   const { movies } = useMovies(search);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    console.log(value);
 
     updateSearch(value);
   };
