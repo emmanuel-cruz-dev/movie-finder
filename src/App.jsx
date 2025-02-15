@@ -1,20 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 
+function useSearch() {
+  const [search, updateSearch] = useState("");
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (search == "") {
+      setError("No se puede buscar una película vacía.");
+      return;
+    }
+
+    if (search.match(/^\d+$/)) {
+      setError("No se puede buscar una película con un número.");
+      return;
+    }
+
+    if (search.length < 3) {
+      setError("La búsqueda debe tener al menos 3 caracteres.");
+      return;
+    }
+
+    setError(null);
+  }, [search]);
+
+  return { search, updateSearch, error };
+}
+
 function App() {
   const [query, setQuery] = useState();
   const { movies } = useMovies(query);
+  const { search, updateSearch, error } = useSearch();
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    setQuery(value);
+    updateSearch(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ query });
+    console.log({ search });
   };
 
   return (
@@ -24,13 +51,14 @@ function App() {
         <form className="form" onSubmit={handleSubmit}>
           <input
             onChange={handleInputChange}
-            value={query}
+            value={search}
             name="query"
             type="text"
             placeholder="Avengers, Star Wars, The Matrix..."
           />
           <button type="submit">Buscar</button>
         </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </header>
       <main>
         {query && (
