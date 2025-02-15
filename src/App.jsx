@@ -31,11 +31,13 @@ function useSearch() {
 
 function App() {
   const [query, setQuery] = useState();
-  const { movies } = useMovies(query);
   const { search, updateSearch, error } = useSearch();
+  const { movies } = useMovies(search);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
+    console.log(value);
+
     updateSearch(value);
   };
 
@@ -52,7 +54,7 @@ function App() {
           <input
             onChange={handleInputChange}
             value={search}
-            name="query"
+            name="search"
             type="text"
             placeholder="Avengers, Star Wars, The Matrix..."
           />
@@ -61,7 +63,7 @@ function App() {
         {error && <p style={{ color: "red" }}>{error}</p>}
       </header>
       <main>
-        {query && (
+        {search && (
           <>
             <h2>Resultados {movies && <span>({movies.length})</span>}</h2>
             <section className="movie__container">
