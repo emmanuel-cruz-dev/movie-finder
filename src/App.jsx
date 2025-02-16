@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
+import Footer from "./components/Footer";
 
 function useSearch() {
   const [search, updateSearch] = useState("");
@@ -80,6 +81,7 @@ function App() {
           </>
         )}
       </main>
+      <Footer />
     </div>
   );
 }
