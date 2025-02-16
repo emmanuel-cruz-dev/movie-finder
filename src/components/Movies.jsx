@@ -16,12 +16,12 @@ export function ListOfMovies({ movies }) {
               <p>
                 <strong>Año:</strong> {movie.year}
               </p>
-              <p className="movie__type">
+              {/* <p className="movie__type">
                 <strong>Tipo:</strong> {movie.type}
               </p>
               <p>
                 <strong>ID:</strong> {movie.id.slice(2)}
-              </p>
+              </p> */}
             </div>
             <button className="movie__button">Ver más</button>
           </aside>
