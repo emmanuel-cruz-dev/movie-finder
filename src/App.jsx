@@ -43,7 +43,6 @@ function App() {
 
   const debouncedGetMovies = useCallback(
     debounce((search) => {
-      console.log("search", search);
       getMovies({ search });
     }, 300),
     []
@@ -81,6 +80,7 @@ function App() {
             type="text"
             placeholder="Avengers, Star Wars, The Matrix..."
           />
+          <label htmlFor="sort-input">Ordenar por título</label>
           <input
             type="checkbox"
             onChange={handleSort}
