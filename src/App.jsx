@@ -42,9 +42,9 @@ function App() {
   const { movies, loading, getMovies } = useMovies({ search, sort });
 
   const handleInputChange = (event) => {
-    const value = event.target.value;
-    updateSearch(value);
-    getMovies({ search });
+    const newSearch = event.target.value;
+    updateSearch(newSearch);
+    getMovies({ search: newSearch });
   };
 
   const handleSort = () => {
