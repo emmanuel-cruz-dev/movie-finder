@@ -2,7 +2,6 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
-import Footer from "./components/Footer";
 import debounce from "just-debounce-it";
 
 function useSearch() {
@@ -106,7 +105,6 @@ function App() {
           </>
         )}
       </main>
-      <Footer />
     </div>
   );
 }
