@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { searchMovies } from "../services/movies";
 
-export function useMovies({ search }) {
+export function useMovies({ search, sort }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -14,7 +14,9 @@ export function useMovies({ search }) {
       setLoading(true);
       setError(null);
       previousSearch.current = search;
+
       const newMovies = await searchMovies({ search });
+
       setMovies(newMovies);
     } catch (error) {
       throw new Error(error.message);
@@ -22,6 +24,10 @@ export function useMovies({ search }) {
       setLoading(false);
     }
   };
+
+  const sortedMovies = sort
+    ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+    : movies;
 
   // useEffect(() => {
   //   fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${input}`)
@@ -43,5 +49,5 @@ export function useMovies({ search }) {
   //     });
   // }, [input]);
 
-  return { movies, getMovies, loading };
+  return { movies: sortedMovies, getMovies, loading };
 }
