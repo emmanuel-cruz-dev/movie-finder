@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
@@ -42,10 +42,13 @@ function App() {
   const { search, updateSearch, error } = useSearch();
   const { movies, loading, getMovies } = useMovies({ search, sort });
 
-  const debouncedGetMovies = debounce((search) => {
-    console.log("search", search);
-    getMovies({ search });
-  }, 500);
+  const debouncedGetMovies = useCallback(
+    debounce((search) => {
+      console.log("search", search);
+      getMovies({ search });
+    }, 300),
+    []
+  );
 
   const handleInputChange = (event) => {
     const newSearch = event.target.value;
