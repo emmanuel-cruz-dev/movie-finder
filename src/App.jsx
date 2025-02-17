@@ -44,7 +44,7 @@ function App() {
   const handleInputChange = (event) => {
     const value = event.target.value;
     updateSearch(value);
-    getMovies();
+    getMovies({ search });
   };
 
   const handleSort = () => {
