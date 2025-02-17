@@ -82,7 +82,12 @@ function App() {
             type="text"
             placeholder="Avengers, Star Wars, The Matrix..."
           />
-          <input type="checkbox" onChange={handleSort} checked={sort} />
+          <input
+            type="checkbox"
+            onChange={handleSort}
+            checked={sort}
+            id="sort-input"
+          />
           <button type="submit">Buscar</button>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}

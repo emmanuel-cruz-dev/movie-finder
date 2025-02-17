@@ -22,6 +22,7 @@ export function useMovies({ search, sort }) {
       throw new Error(error.message);
     } finally {
       setLoading(false);
+      if (error) console.log(error);
     }
   }, []);
 
