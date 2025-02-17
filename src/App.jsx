@@ -38,7 +38,7 @@ function useSearch() {
 
 function App() {
   const { search, updateSearch, error } = useSearch();
-  const { movies, getMovies } = useMovies({ search });
+  const { movies, loading, getMovies } = useMovies({ search });
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -77,7 +77,11 @@ function App() {
           <>
             <h2>Resultados {movies && <span>({movies.length})</span>}</h2>
             <section className="movie__container">
-              <Movies movies={movies} />
+              {loading ? (
+                <p className="movie__no-results">Cargando... </p>
+              ) : (
+                <Movies movies={movies} />
+              )}
             </section>
           </>
         )}

@@ -61,7 +61,7 @@ form{
 }
 
 .movie__no-results{
-  grid-column: span 2;
+  grid-column: span 4;
 }
 
 .movie__button{

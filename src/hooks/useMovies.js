@@ -39,5 +39,5 @@ export function useMovies({ search }) {
   //     });
   // }, [input]);
 
-  return { movies, getMovies };
+  return { movies, getMovies, loading };
 }
