@@ -3,6 +3,7 @@ import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 import Footer from "./components/Footer";
+import debounce from "just-debounce-it";
 
 function useSearch() {
   const [search, updateSearch] = useState("");
@@ -41,10 +42,15 @@ function App() {
   const { search, updateSearch, error } = useSearch();
   const { movies, loading, getMovies } = useMovies({ search, sort });
 
+  const debouncedGetMovies = debounce((search) => {
+    console.log("search", search);
+    getMovies({ search });
+  }, 500);
+
   const handleInputChange = (event) => {
     const newSearch = event.target.value;
     updateSearch(newSearch);
-    getMovies({ search: newSearch });
+    debouncedGetMovies(newSearch);
   };
 
   const handleSort = () => {
