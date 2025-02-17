@@ -79,11 +79,12 @@ form{
 
 @media screen and (min-width: 540px) {
   .movie__card {
-    flex-direction: row;
+    /* flex-direction: row; */
   }
 
   .movie__card img {
-    max-width: 164px;
+    /* max-width: 164px; */
+    /* max-height: 310px; */
   }
 }
 
@@ -93,7 +94,7 @@ form{
   }
 
   .movie__container {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     width: 72vw;
   }
 }
