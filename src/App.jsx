@@ -38,16 +38,17 @@ function useSearch() {
 
 function App() {
   const { search, updateSearch, error } = useSearch();
-  const { movies } = useMovies(search);
+  const { movies, getMovies } = useMovies({ search });
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-
     updateSearch(value);
+    getMovies();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    getMovies();
     console.log({ search });
   };
 

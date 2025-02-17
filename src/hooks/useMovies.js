@@ -1,37 +1,43 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { searchMovies } from "../services/movies";
 
-const apiKey = import.meta.env.VITE_API_KEY;
+export function useMovies({ search }) {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-export function useMovies(input) {
-  const [movies, setMovies] = useState();
+  const getMovies = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const newMovies = await searchMovies({ search });
+      setMovies(newMovies);
+    } catch (error) {
+      throw new Error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const mappedMovies = movies?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    type: movie.Type,
-    poster: movie.Poster,
-  }));
+  // useEffect(() => {
+  //   fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${input}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       //console.log(data.Search);
 
-  useEffect(() => {
-    fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${input}`)
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log(data.Search);
+  //       if (data.Search === undefined) {
+  //         return setMovies(undefined);
+  //       }
+  //       const movieFilter = data.Search.filter(
+  //         (movie) => movie.Type == "movie"
+  //       );
+  //       const moviePosterFilter = movieFilter.filter(
+  //         (movie) => movie.Poster !== "N/A"
+  //       );
+  //       const movieYear = moviePosterFilter.sort((a, b) => b.Year - a.Year);
+  //       setMovies(movieYear);
+  //     });
+  // }, [input]);
 
-        if (data.Search === undefined) {
-          return setMovies(undefined);
-        }
-        const movieFilter = data.Search.filter(
-          (movie) => movie.Type == "movie"
-        );
-        const moviePosterFilter = movieFilter.filter(
-          (movie) => movie.Poster !== "N/A"
-        );
-        const movieYear = moviePosterFilter.sort((a, b) => b.Year - a.Year);
-        setMovies(movieYear);
-      });
-  }, [input]);
-
-  return { movies: mappedMovies };
+  return { movies, getMovies };
 }
